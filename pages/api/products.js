@@ -5,7 +5,14 @@ export async function findAllProducts() {
     return Product.find().exec();
 }
 
+
 export default async function handle (req, res) {
     await connectDB();
-    res.json(await findAllProducts())
+    const {ids} = req.query;
+    if (ids){
+        const idsArray = ids.split(",")
+       return res.json(await Product.find({_id: {$in:idsArray}}).exec())
+    } else {
+        res.json(null)
+    }
 }
