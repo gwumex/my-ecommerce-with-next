@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ProductsContext } from "../context/productContext";
+import Link from "next/link";
 
 export default function Product(product) {
     const {setSelectedProducts} = useContext(ProductsContext);
@@ -9,7 +10,9 @@ export default function Product(product) {
     return (
         <div className="w-64">
             <div className="bg-blue-100 p-5 rounded-xl">
+            <Link href={`/detailpage/?id=${product._id}`}>
                 <img src={product.picture} alt="" />
+            </Link>
             </div>
             <div>
                 <h3 className="font-bold text-lg">{product.name}</h3>

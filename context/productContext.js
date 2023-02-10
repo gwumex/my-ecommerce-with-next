@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 export const ProductsContext = createContext({});
 

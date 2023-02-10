@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import Product from "../components/product";
 import connectDB from "../lib/mongoose";
 import { findAllProducts } from "./api/products";
+import Link from "next/link";
 
 export default function Home ({products}) {
   const [phrase, setPhrase] = useState()
