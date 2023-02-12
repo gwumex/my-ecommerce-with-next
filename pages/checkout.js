@@ -49,21 +49,15 @@ export default function CheckOut() {
 
     useEffect(() => {
         setPrices({...prices, subTotal: 0, total: 0})
-
         if (selectedProducts?.length) {
             let tol = 0;
             setPrices({...prices, subTotal: 0})
             for (let id of selectedProducts){
                 const price = productsInfo?.find(p => p._id === id)?.price || 0;
-                console.log("this is the price",price)
                 tol += price
-                console.log("this is the total price", tol)
             }
             setPrices({...prices, subTotal: tol, total: tol + prices.deliveryPrice})
         }
-        // const total = prices.subTotal + prices.deliveryPrice
-        console.log(prices.subTotal)
-        console.log(prices.total)
     }, [productsInfo])
     
     return (
