@@ -19,7 +19,6 @@ export default async function handler (req, res){
     res.json('ok')
 } 
 
-
 export const config = {
     api: {
         bodyParser: false,
