@@ -4,6 +4,9 @@ import Product from "../../models/product";
 export async function findAllProducts() {
     return Product.find().exec();
 }
+export async function findOne(id) {
+    return Product.find({_id: id}).exec();
+}
 
 export default async function handle (req, res) {
     await connectDB();

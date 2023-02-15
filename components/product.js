@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ProductsContext } from "../context/productContext";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Product(product) {
     const {setSelectedProducts} = useContext(ProductsContext);
@@ -9,9 +10,9 @@ export default function Product(product) {
     }
     return (
         <div className="w-64">
-            <div className="bg-blue-100 p-5 rounded-xl">
-            <Link href={`/detailpage/?id=${product._id}`}>
-                <img src={product.picture} alt="" />
+            <div className="bg-blue-100 p-5 rounded-xl hover:bg-emerald-100">
+            <Link href={`/productPage/?id=${product._id}`}>
+            <Image src={product.picture} alt={product.name} width={500} height={500} blurDataURL="Loading"/>
             </Link>
             </div>
             <div>

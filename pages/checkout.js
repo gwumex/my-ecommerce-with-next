@@ -1,6 +1,8 @@
 import { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import { ProductsContext } from '../context/productContext'
+import Image from 'next/image'
+import Link from 'next/link'
 export default function CheckOut() {
 
     const { selectedProducts, setSelectedProducts } = useContext(ProductsContext)
@@ -62,14 +64,18 @@ export default function CheckOut() {
     
     return (
         <Layout>
+            <div>
+
             {!productsInfo && (
                 <div>no product in your shopping cart</div>
             )}
             {productsInfo && productsInfo.map(
                 productInfo => (
                     <div key={productInfo._id} className='flex mb-5'>
-                        <div className='bg-gray-100 p-3 rounded-xl'>
-                            <img className='w-24' src={productInfo.picture} alt="" />
+                        <div className='bg-gray-100 p-3 rounded-xl hover:bg-emerald-100'>
+                            <Link href={`/productPage/?id=${productInfo._id}`}>
+                                <Image src={productInfo.picture} alt={productInfo.name} width={100} height={100}/>
+                            </Link>
                         </div>
                         <div className='pl-4'>
                             <h3 className='font-bold text-lg'>{productInfo.name}</h3>
@@ -127,6 +133,7 @@ export default function CheckOut() {
                     <input type="hidden" name='products' value={selectedProducts.join(",")} />
                 <button type='submit' className='bg-emerald-500 p-2 text-white w-full rounded-xl font-bold my-4 shadow-emerald-200 shadow-lg'>Pay ${prices.total}</button>
                 </form>
+                </div>
         </Layout>
     )
 }
