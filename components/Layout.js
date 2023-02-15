@@ -14,7 +14,7 @@ export default function Layout({children}){
     }, [])
     return (
         <div className=" min-h-screen">
-            <div className="p-5 mb-28">
+            <div className="p-5 pb-28 bg-gray-50">
                 {success && (
                     <div className="mb-5 bg-green-400 text-white text-lg rounded-xl p-5">
                         Thanks for your order!

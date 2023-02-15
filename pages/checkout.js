@@ -64,38 +64,47 @@ export default function CheckOut() {
     
     return (
         <Layout>
-            <div>
+            <div className='flex justify-center'>
+
+            <div className='max-w-[600px] flex flex-col items-center'>
 
             {!productsInfo && (
-                <div>no product in your shopping cart</div>
-            )}
-            {productsInfo && productsInfo.map(
-                productInfo => (
-                    <div key={productInfo._id} className='flex mb-5'>
-                        <div className='bg-gray-100 p-3 rounded-xl hover:bg-emerald-100'>
-                            <Link href={`/productPage/?id=${productInfo._id}`}>
-                                <Image src={productInfo.picture} alt={productInfo.name} width={100} height={100}/>
-                            </Link>
-                        </div>
-                        <div className='pl-4'>
-                            <h3 className='font-bold text-lg'>{productInfo.name}</h3>
-                            <p className='text-sm'>
-                                {productInfo.description}
-                            </p>
-                            <div className='flex'>
-                                <div className='grow '>${productInfo.price}</div>
-                                <div>
-                                    <button className='border border-emarald-500 px-2 rounded-lg text-emerald-500' onClick={() => {lessOfThisProduct(productInfo._id)}}>-</button>
-                                    <span className='px-2'>
+                <div className='flex items-center h-[70vh]'>
 
-                                    {selectedProducts.filter(id => id === productInfo._id).length}
-                                    </span>
-                                    <button className=' bg-emerald-500 px-2 rounded-lg text-white' onClick={() => {moreOfThisProduct(productInfo._id)}}>+</button>
+                    <div className='font-bold'>No product in your shopping cart</div>
+                </div>
+            )}
+            {productsInfo && (
+                productsInfo.map(
+                    productInfo => (
+                        <div key={productInfo._id} className='flex mb-5'>
+                            <div className='bg-gray-100 p-3 rounded-xl hover:bg-emerald-100'>
+                                <Link href={`/productPage/?id=${productInfo._id}`}>
+                                    <Image src={productInfo.picture} alt={productInfo.name} width={100} height={100}/>
+                                </Link>
+                            </div>
+                            <div className='pl-4'>
+                                <h3 className='font-bold text-lg'>{productInfo.name}</h3>
+                                <p className='text-sm'>
+                                    {productInfo.description}
+                                </p>
+                                <div className='flex'>
+                                    <div className='grow '>${productInfo.price}</div>
+                                    <div>
+                                        <button className='border border-emarald-500 px-2 rounded-lg text-emerald-500' onClick={() => {lessOfThisProduct(productInfo._id)}}>-</button>
+                                        <span className='px-2'>
+    
+                                        {selectedProducts.filter(id => id === productInfo._id).length}
+                                        </span>
+                                        <button className=' bg-emerald-500 px-2 rounded-lg text-white' onClick={() => {moreOfThisProduct(productInfo._id)}}>+</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+
+            )}
+            {productsInfo && (
                 <form action="/api/checkout" method='POST'>
                 <div className='mt-4 max-w-[500px]'>
                     <input name='address' value={buyerInfo
@@ -133,7 +142,10 @@ export default function CheckOut() {
                     <input type="hidden" name='products' value={selectedProducts.join(",")} />
                 <button type='submit' className='bg-emerald-500 p-2 text-white w-full rounded-xl font-bold my-4 shadow-emerald-200 shadow-lg'>Pay ${prices.total}</button>
                 </form>
+            )}    
                 </div>
+                </div>
+
         </Layout>
     )
 }

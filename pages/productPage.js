@@ -14,16 +14,16 @@ const productPage = ({product}) => {
     }
     return (
       <Layout>
-        <div className="flex">
-            <div className="bg-blue-100 p-5 rounded-xl max-w-[200px]">
+        <div className="flex p-5">
+            <div className="bg-blue-100 p-5 rounded-xl max-w-[400px]">
               <Image src={product.picture} alt={product.name} width={500} height={500} />
         </div>
         <div className='pl-4'>
             <h3 className="font-bold text-xl">{product.name}</h3>
-        <p className="text-sm mt-2">{product.description}
+        <p className="text-sm mt-2 mb-3">{product.description}
         </p>
         <div>
-            <div className="text-2xl font-bold grow">${product.price}</div>
+            <div className="text-2xl font-bold grow mb-5">${product.price}</div>
             <button className="bg-emerald-400 text-white py-1 px-3 rounded-xl text" onClick={addProduct
             }> + </button>
         </div>

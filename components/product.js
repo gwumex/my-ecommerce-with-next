@@ -10,7 +10,7 @@ export default function Product(product) {
     }
     return (
         <div className="w-64">
-            <div className="bg-blue-100 p-5 rounded-xl hover:bg-emerald-100">
+            <div className="bg-emerald-100 p-5 rounded-xl  hover:drop-shadow-md">
             <Link href={`/productPage/?id=${product._id}`}>
             <Image src={product.picture} alt={product.name} width={500} height={500} blurDataURL="Loading"/>
             </Link>
