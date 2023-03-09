@@ -15,7 +15,7 @@ const productPage = ({product}) => {
     return (
       <Layout>
         <div className="flex p-5">
-            <div className="bg-blue-100 p-5 rounded-xl max-w-[400px]">
+            <div className="bg-blue-100 p-5 rounded-xl max-w-[500px]">
               <Image src={product.picture} alt={product.name} width={500} height={500} />
         </div>
         <div className='pl-4'>
